@@ -43,7 +43,6 @@ Then install the canari package by issuing the following:
 ```bash
 $ canari create-profile bitcoin-explorer
 ```
-Then do the following (thanks to Nadeem Douba @ndouba):
 
  INSTRUCTIONS:
  -------------
