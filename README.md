@@ -27,6 +27,12 @@ bitcoin-explorer is supported and tested on Python 2.7.x
 The canari framework must be installed to use this package
 See: https://github.com/allfro/canari
 
+A Google Custom Search Engine (The whole internet)
+See: https://support.google.com/customsearch/answer/2631040?hl=en
+
+Google Developers API
+See: https://console.developers.google.com
+
 This package depends on the python requests package, the package will be installed when you run setup.py automatically if you do not already have the 'requests' package installed.
 
 ### 2.3 - How to install
@@ -53,7 +59,7 @@ $ canari create-profile bitcoin-explorer
  5. Follow prompts.
  6. Enjoy!
 
-Once installed you must edit the bitcoin-explorer.conf file with local environment settings. Note currently there are no configuration options in the bitcoin-explorer package.
+Once installed you must edit the bitcoin-explorer.conf file with Google custom search engine and Google (browser) API.  See the requirements section above for resources to the Google CSE and API.
 
 ```bash
 $ vim ~/.canari/bitcoin-explorer.conf
