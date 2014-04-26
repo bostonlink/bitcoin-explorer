@@ -1,6 +1,6 @@
 # bitcoin-explorer - Bitcoin Blockchain Local Maltego Transform Pack
 
-Author : @bostonlink
+Author : David Bressler (@bostonlink)
 
 ## About
 

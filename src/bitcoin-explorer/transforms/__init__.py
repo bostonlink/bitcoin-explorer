@@ -21,5 +21,6 @@ __all__ = [
     'toTransactionDate',
     'toTransactionAddresses',
     'toTransactionType',
-    'toAmountSentinTrans'
+    'toAmountSentinTrans',
+    'toGSEResults',
 ]
