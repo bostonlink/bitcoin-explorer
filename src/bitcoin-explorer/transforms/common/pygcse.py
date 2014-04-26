@@ -49,19 +49,3 @@ def cseq_nextp(gapi, cseid, startindex, query):
 	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&%s&%s" % (gapi, cseid, query, start)
 
 	return http_get(url)
-
-
-# Dev shit and testing below - Delete before pushing!
-
-#cseid = '004789283585187479137:bkw4vuae8n0'
-#gapi = 'AIzaSyB1zoOKWsKnwWsLVzEglR7lKCx62S2ba0E'
-
-# jsondata = json.loads(csequery(gapi, cseid, '1FfmbHfnpaZjKFvyi1okTjJJusN455paPH -site:blockchain.info -site:blockexplorer.com'))
-
-#f = open('data', 'r').read()
-#jsondata = json.loads(f)
-#starti = jsondata['queries']['nextPage'][0]['startIndex']
-#query = jsondata['queries']['nextPage'][0]['searchTerms']
-#print cseq_nextp(gapi, cseid, starti, query)
-
-# print csequery(gapi, cseid, '1FfmbHfnpaZjKFvyi1okTjJJusN455paPH -site:blockchain.info -site:blockexplorer.com')
