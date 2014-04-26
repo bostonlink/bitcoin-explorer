@@ -35,7 +35,7 @@ def dotransform(request, response, config):
     e = BitcoinAmount(btc_add['sent_bitcoins'],
                       address = request.value )
     e += Label("Bitcoin Address", request.value)
-    e.linklabel = 'sent'
+    e.linklabel = 'Sent'
     response += e
 
     return response

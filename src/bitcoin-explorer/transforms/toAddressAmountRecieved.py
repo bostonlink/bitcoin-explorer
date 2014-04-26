@@ -22,9 +22,9 @@ __all__ = [
 
 
 @configure(
-    label='To Bitcoin Total Amount Recieved [Bitcoin-Explorer]',
+    label='To Bitcoin Total Amount Received [Bitcoin-Explorer]',
     description='Returns a BitcoinAmount entity with the total amount of bitcoins the address holds from a BitcoinAddress entity',
-    uuids=[ 'bitcoin-explorer.v2.BitcoinAddressToBitcoinAmountRecieved' ],
+    uuids=[ 'bitcoin-explorer.v2.BitcoinAddressToBitcoinAmountReceived' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinAddress) ],
     remote=False,
     debug=True
@@ -36,7 +36,7 @@ def dotransform(request, response, config):
     e = BitcoinAmount(btc_add['received_bitcoin_total'],
                       address = request.value )
     e += Label("Bitcoin Address", request.value)
-    e.linklabel = 'recieved'
+    e.linklabel = 'Received'
     response += e
 
     return response

@@ -46,6 +46,8 @@ def dotransform(request, response, config):
             e += Label("Total Amount of Transaction", trans['transaction_amount'])
             e += Label("Transaction Type", trans['transaction_type'])
             e += Label("Transaction Date", trans['date'])
+            e.linklabel = 'Sent'
+            
             response += e
 
         else:

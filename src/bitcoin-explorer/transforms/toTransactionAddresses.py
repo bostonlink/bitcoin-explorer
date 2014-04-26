@@ -31,24 +31,29 @@ __all__ = [
 
 def dotransform(request, response, config):
     
-    btc_add = bitcoin_address(request.fields['address'])
+    try:
+        
+        btc_add = bitcoin_address(request.fields['address'])
     
-    for trans in btc_add['transactions']:
+        for trans in btc_add['transactions']:
+            if request.value == trans['transaction_hash']:
+                for address in trans['addresses']:
+                    e = BitcoinAddress(address)
+                    e += Field("date", trans['date'], displayname='Date')
+                    e += Field("trans_uri", trans['transaction_uri'], displayname='Transaction URI')
+                    e += Field("recieved_address", request.fields['address'], displayname='Recieved Address')
+                    e += Label("Bitcoin Address", address)
+                    e += Label("Bitcoin Recieved Address", request.fields['address'])
+                    e += Label("Transaction Type", trans['transaction_type'])
+                    e += Label("Transaction Hash", trans['transaction_hash'])
+                    e += Label("Transaction Date", trans['date'])
+                    
+                    response += e
 
-        if request.value == trans['transaction_hash']:
-            for address in trans['addresses']:
-                e = BitcoinAddress(address)
-                e += Field("date", trans['date'], displayname='Date')
-                e += Field("trans_uri", trans['transaction_uri'], displayname='Transaction URI')
-                e += Field("recieved_address", request.fields['address'], displayname='Recieved Address')
-                e += Label("Bitcoin Address", address)
-                e += Label("Bitcoin Recieved Address", request.fields['address'])
-                e += Label("Transaction Type", trans['transaction_type'])
-                e += Label("Transaction Hash", trans['transaction_hash'])
-                e += Label("Transaction Date", trans['date'])
-            response += e
+            else:
+                pass
 
-        else:
-            pass
+        return response
 
-    return response
+    except:
+        pass

@@ -29,7 +29,11 @@ __all__ = [
 
 def dotransform(request, response, config):
 
-    e = TransactionDate(request.fields['date'])
-    response += e
+    try:
+        e = TransactionDate(request.fields['date'])
+        response += e
 
-    return response
+        return response
+
+    except:
+        pass
