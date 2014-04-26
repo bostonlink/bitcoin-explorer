@@ -4,7 +4,6 @@
 
 import requests
 import urllib
-import json
 
 __author__ = 'David Bressler (@bostonlink)'
 __copyright__ = 'Copyright 2014, David Bressler'
