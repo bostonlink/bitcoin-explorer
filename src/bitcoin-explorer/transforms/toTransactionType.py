@@ -26,16 +26,20 @@ __all__ = [
     inputs=[ ( 'Bitcoin Explorer', BitcoinAmount),
              ( 'Bitcoin Explorer', BitcoinTransaction) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):
 
-    if 'trans_type' in request.fields:
-        e = TransactionType(request.fields['trans_type'])
-        response += e
+    try:
+        if 'trans_type' in request.fields:
+            e = TransactionType(request.fields['trans_type'])
+            response += e
 
-        return response
+            return response
     
-    else:
+        else:
+            pass
+
+    except:
         pass

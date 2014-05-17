@@ -29,7 +29,7 @@ __all__ = [
     uuids=[ 'bitcoin-explorer.v2.BitcoinAddressToGCSEResults' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinAddress) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):

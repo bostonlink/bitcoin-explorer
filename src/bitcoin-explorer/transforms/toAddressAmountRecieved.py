@@ -27,16 +27,20 @@ __all__ = [
     uuids=[ 'bitcoin-explorer.v2.BitcoinAddressToBitcoinAmountReceived' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinAddress) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):
     
-    btc_add = bitcoin_address(request.value)
-    e = BitcoinAmount(btc_add['received_bitcoin_total'],
-                      address = request.value )
-    e += Label("Bitcoin Address", request.value)
-    e.linklabel = 'Received'
-    response += e
+    try:
+        btc_add = bitcoin_address(request.value)
+        e = BitcoinAmount(btc_add['received_bitcoin_total'],
+                          address = request.value )
+        e += Label("Bitcoin Address", request.value)
+        e.linklabel = 'Received'
+        response += e
 
-    return response
+        return response
+
+    except:
+        pass

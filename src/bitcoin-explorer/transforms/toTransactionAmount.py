@@ -25,17 +25,21 @@ __all__ = [
     uuids=[ 'bitcoin-explorer.v2.BitcoinTransactionToTransactionAmount' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinTransaction) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):
+    
+    try:
+        e = BitcoinAmount(request.fields['amount'])
+        e += Field("date", request.fields['date'], displayname='Date')
+        e += Field("trans_type", request.fields['trans_type'], displayname='Transaction Type')
+        e += Field("trans_hash", request.value, displayname="Transaction Hash")
+        e += Label("Transaction Type", request.fields['trans_type'])
+        e += Label("Transaction Date", request.fields['date'])
+        response += e
 
-    e = BitcoinAmount(request.fields['amount'])
-    e += Field("date", request.fields['date'], displayname='Date')
-    e += Field("trans_type", request.fields['trans_type'], displayname='Transaction Type')
-    e += Field("trans_hash", request.value, displayname="Transaction Hash")
-    e += Label("Transaction Type", request.fields['trans_type'])
-    e += Label("Transaction Date", request.fields['date'])
-    response += e
+        return response
 
-    return response
+    except:
+        pass

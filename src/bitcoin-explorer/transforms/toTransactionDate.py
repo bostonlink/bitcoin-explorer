@@ -24,7 +24,7 @@ __all__ = [
     uuids=[ 'bitcoin-explorer.v2.BitcoinTransactionToTransactionDate' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinTransaction) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):

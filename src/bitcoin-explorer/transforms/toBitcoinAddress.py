@@ -29,23 +29,27 @@ __all__ = [
     inputs=[ ( 'Bitcoin Explorer', Phrase ),
              ( 'Bitcoin Explorer', BitcoinAddress) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):
     
-    btc_add = bitcoin_address(request.value)
-    e = BitcoinAddress(request.value)
-    e += Label("Short URL", btc_add['short_link'])
-    e += Label("Date First Seen", btc_add['first_seen_date'])
-    e += Label("First Seen in Block", btc_add['first_seen_block'])
-    e += Label("Total Transactions Received", btc_add['received_transactions'])
-    e += Label("Total Bitcoins Received", btc_add['received_bitcoin_total'])
-    e += Label("Total Sent Transactions", btc_add['sent_transactions'])
-    e += Label("Total Bitcoins Sent", btc_add['sent_bitcoins'])
-    e += Label("Hash", btc_add['hash160'])
-    e += Label("PublicKey", btc_add['public_key'])
+    try:
+        btc_add = bitcoin_address(request.value)
+        e = BitcoinAddress(request.value)
+        e += Label("Short URL", btc_add['short_link'])
+        e += Label("Date First Seen", btc_add['first_seen_date'])
+        e += Label("First Seen in Block", btc_add['first_seen_block'])
+        e += Label("Total Transactions Received", btc_add['received_transactions'])
+        e += Label("Total Bitcoins Received", btc_add['received_bitcoin_total'])
+        e += Label("Total Sent Transactions", btc_add['sent_transactions'])
+        e += Label("Total Bitcoins Sent", btc_add['sent_bitcoins'])
+        e += Label("Hash", btc_add['hash160'])
+        e += Label("PublicKey", btc_add['public_key'])
     
-    response += e
+        response += e
 
-    return response
+        return response
+
+    except:
+        pass

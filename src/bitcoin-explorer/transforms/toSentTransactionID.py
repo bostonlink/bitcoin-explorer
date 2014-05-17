@@ -26,31 +26,35 @@ __all__ = [
     uuids=[ 'bitcoin-explorer.v2.BitcoinAddressToSentTransactionID' ],
     inputs=[ ( 'Bitcoin Explorer', BitcoinAddress) ],
     remote=False,
-    debug=True
+    debug=False
 )
 
 def dotransform(request, response, config):
     
-    btc_add = bitcoin_address(request.value)
+    try:
+        btc_add = bitcoin_address(request.value)
     
-    for trans in btc_add['transactions']:
+        for trans in btc_add['transactions']:
 
-        if 'Sent' in trans['transaction_type']:
-            e = BitcoinTransaction(trans['transaction_hash'],
-                                   trans_type = trans['transaction_type'],
-                                   amount = trans['transaction_amount'],
-                                   trans_uri = trans['transaction_uri'],
-                                   address = request.value)
-            e += Field("date", trans['date'], displayname='Date')
-            e += Label("Bitcoin Address", request.value)
-            e += Label("Total Amount of Transaction", trans['transaction_amount'])
-            e += Label("Transaction Type", trans['transaction_type'])
-            e += Label("Transaction Date", trans['date'])
-            e.linklabel = 'Sent'
+            if 'Sent' in trans['transaction_type']:
+                e = BitcoinTransaction(trans['transaction_hash'],
+                                       trans_type = trans['transaction_type'],
+                                       amount = trans['transaction_amount'],
+                                       trans_uri = trans['transaction_uri'],
+                                       address = request.value)
+                e += Field("date", trans['date'], displayname='Date')
+                e += Label("Bitcoin Address", request.value)
+                e += Label("Total Amount of Transaction", trans['transaction_amount'])
+                e += Label("Transaction Type", trans['transaction_type'])
+                e += Label("Transaction Date", trans['date'])
+                e.linklabel = 'Sent'
             
-            response += e
+                response += e
 
-        else:
-            pass
+            else:
+                pass
 
-    return response
+        return response
+
+    except:
+        pass
