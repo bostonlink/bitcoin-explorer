@@ -68,7 +68,7 @@ All Done!!  Have fun!
 
 ## Special Thanks!
 
-The entire Bitcoin and crypto currency community
+The entire Bitcoin and crypto currency community<br/>
 Paterva (@Paterva)<br/>
 Nadeem Douba (@ndouba)<br/>
 MassHackers (@MassHackers)<br/>
