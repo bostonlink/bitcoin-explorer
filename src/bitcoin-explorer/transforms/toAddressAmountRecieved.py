@@ -4,6 +4,7 @@ from canari.maltego.message import Label
 from canari.framework import configure
 from common.entities import BitcoinAmount, BitcoinAddress
 from common.blockexplorer import bitcoin_address
+from canari.maltego.message import MaltegoException
 # to add an exception : from canari.maltego.message import MaltegoException, UIMessage
 
 __author__ = 'bostonlink'
@@ -42,5 +43,5 @@ def dotransform(request, response, config):
 
         return response
 
-    except:
-        pass
+    except Exception as e:
+        raise MaltegoException('An error occured: %s' % e)

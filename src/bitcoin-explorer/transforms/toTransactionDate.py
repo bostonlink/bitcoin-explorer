@@ -2,6 +2,7 @@
 
 from canari.framework import configure
 from common.entities import BitcoinTransaction, TransactionDate
+from canari.maltego.message import MaltegoException
 
 __author__ = 'bostonlink'
 __copyright__ = 'Copyright 2014, Bitcoin-explorer Project'
@@ -35,5 +36,5 @@ def dotransform(request, response, config):
 
         return response
 
-    except:
-        pass
+    except Exception as e:
+        raise MaltegoException('An error occured: %s' % e)
