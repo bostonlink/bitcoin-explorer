@@ -15,7 +15,8 @@ setup(
     },
     install_requires=[
         'canari',
-        'requests'
+        'requests',
+        'beautifulsoup4'
     ],
     dependency_links=[
         # custom links for the install_requires
